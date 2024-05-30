@@ -1,10 +1,18 @@
+version: '3.8'
+
 services:
   mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+    image: 'mysql:8.0.36'
+    command:
+      - --default-authentication-plugin=caching_sha2_password
+    restart: unless-stopped
+    env_file:
+      - src/main/resources/env/mysql.env
     ports:
+      - '3306:3306'
+    expose:
       - '3306'
+
+networks:
+  backend-network:
+    driver: bridge
