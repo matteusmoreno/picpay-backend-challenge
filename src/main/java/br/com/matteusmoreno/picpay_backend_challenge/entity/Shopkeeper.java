@@ -16,8 +16,8 @@ import java.util.UUID;
 @Getter @Setter
 public class Shopkeeper {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String completeName;
     private String cnpj;
     private String email;

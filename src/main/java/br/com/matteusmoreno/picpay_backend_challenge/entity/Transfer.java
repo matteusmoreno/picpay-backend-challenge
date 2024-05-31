@@ -9,17 +9,19 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "common_users")
+@Table(name = "transfers")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
-public class CommonUser {
+public class Transfer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String completeName;
-    private String cpf;
-    private String email;
-    private String password;
-    private BigDecimal balance;
+    @ManyToOne
+    @JoinColumn(name = "payer_id")
+    private CommonUser payer;
+    @ManyToOne
+    @JoinColumn(name = "payee_id")
+    private Shopkeeper payee;
+    private BigDecimal value;
 }

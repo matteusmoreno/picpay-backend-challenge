@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public record ShopkeeperDetailsResponse(
-        UUID id,
+        Long id,
         String completeName,
         String cnpj,
         String email,

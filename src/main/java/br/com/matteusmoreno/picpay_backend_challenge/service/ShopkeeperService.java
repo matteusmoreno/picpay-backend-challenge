@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class ShopkeeperService {
 
@@ -22,6 +24,7 @@ public class ShopkeeperService {
     public Shopkeeper createShopkeeper(CreateShopkeeperRequest request) {
         Shopkeeper shopkeeper = new Shopkeeper();
         BeanUtils.copyProperties(request, shopkeeper);
+        shopkeeper.setBalance(new BigDecimal("0.0"));
 
         shopkeeperRepository.save(shopkeeper);
 

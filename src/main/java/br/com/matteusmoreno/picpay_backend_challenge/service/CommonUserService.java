@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class CommonUserService {
 
@@ -22,6 +24,7 @@ public class CommonUserService {
     public CommonUser createCommonUser(CreateCommonUserRequest request) {
         CommonUser commonUser = new CommonUser();
         BeanUtils.copyProperties(request, commonUser);
+        commonUser.setBalance(new BigDecimal("0.0"));
 
         commonUserRepository.save(commonUser);
 
