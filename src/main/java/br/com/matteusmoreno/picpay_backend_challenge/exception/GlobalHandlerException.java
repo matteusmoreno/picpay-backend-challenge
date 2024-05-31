@@ -1,6 +1,5 @@
 package br.com.matteusmoreno.picpay_backend_challenge.exception;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,5 +21,15 @@ public class GlobalHandlerException {
     @ExceptionHandler(ShopkeeperNotFoundException.class)
     public ResponseEntity<String> handleShopkeeperNotFoundException(ShopkeeperNotFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AuthorizationDeniedException.class)
+    public ResponseEntity<String> handleAuthorizationDeniedException(AuthorizationDeniedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(EmailNotSentException.class)
+    public ResponseEntity<String> hadleEmailNotSentException(EmailNotSentException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
