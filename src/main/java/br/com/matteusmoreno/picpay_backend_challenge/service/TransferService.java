@@ -66,7 +66,6 @@ public class TransferService {
             throw new EmailNotSentException();
         }
 
-
         payer.setBalance(payer.getBalance().subtract(request.value()));
         payee.setBalance(payee.getBalance().add(request.value()));
 

@@ -2,8 +2,13 @@ package br.com.matteusmoreno.picpay_backend_challenge.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalHandlerException {
@@ -31,5 +36,15 @@ public class GlobalHandlerException {
     @ExceptionHandler(EmailNotSentException.class)
     public ResponseEntity<String> hadleEmailNotSentException(EmailNotSentException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        List<String> errorMessages = e.getBindingResult().getFieldErrors()
+                .stream()
+                .map(FieldError::getDefaultMessage)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.badRequest().body(String.join(", ", errorMessages));
     }
 }

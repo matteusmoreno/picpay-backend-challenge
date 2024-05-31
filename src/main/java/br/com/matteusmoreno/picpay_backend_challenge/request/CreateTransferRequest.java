@@ -5,10 +5,10 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public record CreateTransferRequest(
-        @NotNull
+        @NotNull(message = "Payer ID cannot be null")
         Long payer,
-        @NotNull
+        @NotNull(message = "Payee ID cannot be null")
         Long payee,
-        @NotNull
+        @NotNull(message = "Value cannot be null")
         BigDecimal value) {
 }

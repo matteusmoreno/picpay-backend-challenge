@@ -5,8 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public record CreateDepositRequest(
-        @NotNull
+        @NotNull(message = "ID cannot be null")
         Long id,
-        @NotNull
+        @NotNull(message = "Value cannot be null")
         BigDecimal value) {
 }
