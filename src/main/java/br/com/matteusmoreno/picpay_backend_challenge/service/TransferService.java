@@ -75,6 +75,8 @@ public class TransferService {
         transfer.setValue(request.value());
 
         transferRepository.save(transfer);
+        commonUserRepository.save(payer);
+        shopkeeperRepository.save(payee);
 
         return transfer;
     }

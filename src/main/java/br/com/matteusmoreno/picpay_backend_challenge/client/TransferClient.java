@@ -11,5 +11,4 @@ public interface TransferClient {
     @GetMapping
     @ResponseBody
     Response transferAuthorizer();
-
 }

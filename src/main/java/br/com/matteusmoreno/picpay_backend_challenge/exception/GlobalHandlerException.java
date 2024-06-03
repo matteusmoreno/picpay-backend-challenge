@@ -34,8 +34,13 @@ public class GlobalHandlerException {
     }
 
     @ExceptionHandler(EmailNotSentException.class)
-    public ResponseEntity<String> hadleEmailNotSentException(EmailNotSentException e) {
+    public ResponseEntity<String> handleEmailNotSentException(EmailNotSentException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(DuplicateResourceException.class)
+    public ResponseEntity<String> handleDuplicateResourceException(DuplicateResourceException ex) {
+        return ResponseEntity.status(409).body(ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

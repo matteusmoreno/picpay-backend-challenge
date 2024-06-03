@@ -1,10 +1,8 @@
 package br.com.matteusmoreno.picpay_backend_challenge.controller;
 
-import br.com.matteusmoreno.picpay_backend_challenge.entity.CommonUser;
 import br.com.matteusmoreno.picpay_backend_challenge.entity.Transfer;
 import br.com.matteusmoreno.picpay_backend_challenge.request.CreateDepositRequest;
 import br.com.matteusmoreno.picpay_backend_challenge.request.CreateTransferRequest;
-import br.com.matteusmoreno.picpay_backend_challenge.response.CommonUserDetailsResponse;
 import br.com.matteusmoreno.picpay_backend_challenge.response.DepositDetailsResponse;
 import br.com.matteusmoreno.picpay_backend_challenge.response.TransferDetailsResponse;
 import br.com.matteusmoreno.picpay_backend_challenge.service.TransferService;
